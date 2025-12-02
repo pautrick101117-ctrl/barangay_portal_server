@@ -1,4 +1,3 @@
-// models/User.js
 const mongoose = require("mongoose");
 
 const UserSchema = new mongoose.Schema(
@@ -37,12 +36,15 @@ const UserSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-
-    // 🔥 NEW FIELD: allows only one suggestion per user
+    // Project Suggestion fields
     hasSuggested: { type: Boolean, default: false },
     lastSuggestionDate: { type: Date },
-    currentSuggestionId: { type: mongoose.Schema.Types.ObjectId, ref: "ProjectSuggestion" }
-    },
+    currentSuggestionId: { type: mongoose.Schema.Types.ObjectId, ref: "ProjectSuggestion" },
+    
+    // Project Voting fields
+    votedProjectId: { type: mongoose.Schema.Types.ObjectId, ref: "Project" },
+    lastVoteMonth: { type: String }, // Format: "YYYY-MM"
+  },
   { timestamps: true }
 );
 

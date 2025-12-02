@@ -13,7 +13,7 @@ const newsRoutes = require("./router/newsRoutes");
 const adminAccRoutes = require('./router/adminAccount.js');
 const complaintsRoutes = require('./router/complaints'); 
 const projectSuggestionRoutes = require("./router/projectSuggestionRoutes");
-
+const homeRouter = require('./router/HomeRouter.js')
 const app = express();
 
 // ✅ Allow CORS
@@ -31,6 +31,7 @@ app.use("/api/admin/news", newsRoutes);
 app.use("/api/admin/", adminAccRoutes);
 app.use("/api/admin/complaints", complaintsRoutes);
 app.use("/api/admin/project-suggestions", projectSuggestionRoutes);
+app.use("/api/home", homeRouter);
 
 // ✅ Error handler
 app.use((err, req, res, next) => {
